@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+#The Object
+kind: Deployment
+#This is crucial data to the Deployment
+metadata:
+  name: new-app-v2
+#Specification of the Deployment object
+spec:
+#Can be even 0
+  replicas: 3
+#template always define a pod object.
+  template:
+    metadata:
+#
+      labels:
+        app: new-app-v2
+#This spec is spefication of witch individual pod object that will created
+#If we need different pods with different containers we need differen deployment
+    spec:
+#This is spec of the conteiners of the pod
+      containers:
+#Here we add a LIST with "-" thats mean not just nested
+#name of the container
+        - name: second-node
+#imige of the container (apenov is the docker hub repo)
+          image: apenov/new-app:vrs1
